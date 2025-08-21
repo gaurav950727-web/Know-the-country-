@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Know The World</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f8fa;
+    margin: 0; padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  header {
+    margin-top: 40px;
+    font-size: 3rem;
+    font-weight: 600;
+    color: #2c3e50;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 2px;
+  }
+  .search-container {
+    margin: 20px 0 40px 0;
+    width: 60%;
+  }
+  input[type="search"] {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+  }
+  input[type="search"]:focus {
+    border-color: #2980b9;
+    box-shadow: 0 0 8px #2980b9;
+  }
+
+  .country-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+    gap: 25px;
+    width: 75%;
+    margin-bottom: 60px;
+  }
+
+  .country-folder {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
+    cursor: pointer;
+    text-align: center;
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+  .country-folder:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.15);
+  }
+
+  .flag-vertical {
+    width: 40px;
+    height: 60px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    object-fit: cover;
+    margin-bottom: 12px;
+  }
+
+  .country-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #34495e;
+  }
+</style>
+</head>
+<body>
+
+<header>Know The World</header>
+
+<div class="search-container">
+  <input type="search" placeholder="Search countries..." id="searchInput" onkeyup="filterCountries()" />
+</div>
+
+<div class="country-grid" id="countryGrid">
+
+  <!-- Example folder format -->
+  <div class="country-folder" tabindex="0" role="button" aria-label="Folder for Australia">
+    <img src="https://flagcdn.com/w40/au.png" alt="Australia Flag" class="flag-vertical" />
+    <div class="country-name">Australia</div>
+  </div>
+
+  <div class="country-folder" tabindex="0" role="button" aria-label="Folder for Brazil">
+    <img src="https://flagcdn.com/w40/br.png" alt="Brazil Flag" class="flag-vertical" />
+    <div class="country-name">Brazil</div>
+  </div>
+
+  <div class="country-folder" tabindex="0" role="button" aria-label="Folder for Canada">
+    <img src="https://flagcdn.com/w40/ca.png" alt="Canada Flag" class="flag-vertical" />
+    <div class="country-name">Canada</div>
+  </div>
+
+  <div class="country-folder" tabindex="0" role="button" aria-label="Folder for China">
+    <img src="https://flagcdn.com/w40/cn.png" alt="China Flag" class="flag-vertical" />
+    <div class="country-name">China</div>
+  </div>
+
+  <div class="country-folder" tabindex="0" role="button" aria-label="Folder for France">
+    <img src="https://flagcdn.com/w40/fr.png" alt="France Flag" class="flag-vertical" />
+    <div class="country-name">France</div>
+  </div>
+
+  <div class="country-folder" tabindex="0" role="button" aria-label="Folder for Germany">
+    <img src="https://flagcdn.com/w40/de.png" alt="Germany Flag" class="flag-vertical" />
+    <div class="country-name">Germany</div>
+  </div>
+
+  <div class="country-folder" tabindex="0" role="button" aria-label="Folder for India">
+    <img src="https://flagcdn.com/w40/in.png" alt="India Flag" class="flag-vertical" />
+    <div class="country-name">India</div>
+  </div>
+
+  <div class="country-folder" tabindex="0" role="button" aria-label="Folder for Italy">
+    <img src="https://flagcdn.com/w40/it.png" alt="Italy Flag" class="flag-vertical" />
+    <div class="country-name">Italy</div>
+  </div>
+
+  <div class="country-folder" tabindex="0" role="button" aria-label="Folder for Japan">
+    <img src="https://flagcdn.com/w40/jp.png" alt="Japan Flag" class="flag-vertical" />
+    <div class="country-name">Japan</div>
+  </div>
+
+  <div class="country-folder" tabindex="0" role="button" aria-label="Folder for Mexico">
+    <img src="https://flagcdn.com/w40/mx.png" alt="Mexico Flag" class="flag-vertical" />
+    <div class="country-name">Mexico</div>
+  </div>
+
+  <div class="country-folder" tabindex="0" role="button" aria-label="Folder for Netherlands">
+    <img src="https://flagcdn.com/w40/nl.png" alt="Netherlands Flag" class="flag-vertical" />
+    <div class="country-name">Netherlands</div>
+  </div>
+
+  <div class="country-folder" tabindex="0" role="button" aria-label="Folder for Nigeria">
+    <img src="https://flagcdn.com/w40/ng.png" alt="Nigeria Flag" class="flag-vertical" />
+    <div class="country-name">Nigeria</div>
+  </div>
+
+  <div class="country-folder" tabindex="0" role="button" aria-label="Folder for Russia">
+    <img src="https://flagcdn.com/w40/ru.png" alt="Russia Flag" class="flag-vertical" />
+    <div class="country-name">Russia</div>
+  </div>
+
+  <div class="country-folder" tabindex="0" role="button" aria-label="Folder for Saudi Arabia">
+    <img src="https://flagcdn.com/w40/sa.png" alt="Saudi Arabia Flag" class="flag-vertical" />
+    <div class="country-name">Saudi Arabia</div>
+  </div>
+
+  <div class="country-folder" tabindex="0" role="button" aria-label="Folder for South Africa">
+    <img src="https://flagcdn.com/w40/za.png" alt="South Africa Flag" class="flag-vertical" />
+    <div class="country-name">South Africa</div>
+  </div>
+
+  <div class="country-folder" tabindex="0" role="button" aria-label="Folder for South Korea">
+    <img src="https://flagcdn.com/w40/kr.png" alt="South Korea Flag" class="flag-vertical" />
+    <div class="country-name">South Korea</div>
+  </div>
+
+  <div class="country-folder" tabindex="0" role="button" aria-label="Folder for Spain">
+    <img src="https://flagcdn.com/w40/es.png" alt="Spain Flag" class="flag-vertical" />
+    <div class="country-name">Spain</div>
+  </div>
+
+  <div class="country-folder" tabindex="0" role="button" aria-label="Folder for Sweden">
+    <img src="https://flagcdn.com/w40/se.png" alt="Sweden Flag" class="flag-vertical" />
+    <div class="country-name">Sweden</div>
+  </div>
+
+  <div class="country-folder" tabindex="0" role="button" aria-label="Folder for Turkey">
+    <img src="https://flagcdn.com/w40/tr.png" alt="Turkey Flag" class="flag-vertical" />
+    <div class="country-name">Turkey</div>
+  </div>
+
+  <div class="country-folder" tabindex="0" role="button" aria-label="Folder for United Kingdom">
+    <img src="https://flagcdn.com/w40/gb.png" alt="United Kingdom Flag" class="flag-vertical" />
+    <div class="country-name">United Kingdom</div>
+  </div>
+
+  <div class="country-folder" tabindex="0" role="button" aria-label="Folder for United States">
+    <img src="https://flagcdn.com/w40/us.png" alt="United States Flag" class="flag-vertical" />
+    <div class="country-name">United States</div>
+  </div>
+
+</div>
+
+<script>
+  function filterCountries() {
+    const input = document.getElementById('searchInput');
+    const filter = input.value.toLowerCase();
+    const grid = document.getElementById('countryGrid');
+    const folders = grid.getElementsByClassName('country-folder');
+
+    for (let i = 0; i < folders.length; i++) {
+      const countryName = folders[i].querySelector('.country-name').textContent.toLowerCase();
+      if (countryName.indexOf(filter) > -1) {
+        folders[i].style.display = '';
+      } else {
+        folders[i].style.display = 'none';
+      }
+    }
+  }
+</script>
+
+</body>
+  </html>
+  
